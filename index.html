@@ -4,32 +4,29 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Pr1thv Hub - Anime & Games</title>
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 <style>
-body {margin:0; font-family:'Roboto',sans-serif; background:linear-gradient(135deg,#1f1c2c,#928dab); color:#fff; overflow-x:hidden; scroll-behavior:smooth;}
+body{margin:0;font-family:sans-serif;background:linear-gradient(135deg,#1f1c2c,#928dab);color:#fff;overflow-x:hidden;scroll-behavior:smooth;}
 h1,h2{text-align:center;text-shadow:0 0 10px #00f,0 0 20px #0ff;}
 #searchBar{display:block;margin:20px auto;padding:10px;width:90%;max-width:500px;border-radius:10px;border:none;font-size:18px;text-align:center;outline:none;}
-.section{margin:20px auto; max-width:1200px;}
-.cards{display:grid; grid-template-columns:repeat(auto-fill,minmax(180px,1fr)); gap:20px;}
-.card{background: rgba(255,255,255,0.1); border-radius:15px; overflow:hidden; text-align:center; transition: transform 0.5s, box-shadow 0.5s, opacity 1s; opacity:0; transform:translateY(50px); box-shadow:0 0 10px #00f;}
-.card.show{opacity:1; transform:translateY(0);}
-.card:hover{transform: scale(1.1) rotateZ(1deg); box-shadow:0 0 25px #0ff;}
-.card img{width:100%; height:200px; object-fit:cover; transition: transform 0.5s;}
+.section{margin:20px auto;max-width:1200px;}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:20px;}
+.card{background: rgba(255,255,255,0.1);border-radius:15px;overflow:hidden;text-align:center;transition: transform 0.5s, box-shadow 0.5s, opacity 1s;opacity:0;transform:translateY(50px);box-shadow:0 0 10px #00f;}
+.card.show{opacity:1;transform:translateY(0);}
+.card:hover{transform: scale(1.1) rotateZ(1deg);box-shadow:0 0 25px #0ff;}
+.card img{width:100%;height:200px;object-fit:cover;transition: transform 0.5s;}
 .card img:hover{transform: scale(1.05) rotateZ(-1deg);}
 .card h3{margin:10px 0 5px 0;}
 .card p{padding:0 10px 10px 10px;font-size:14px;}
-canvas#particles{position:fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:-1;}
-audio{display:block; margin:20px auto;}
-
-/* Mini Game Styles */
-#gameContainer{text-align:center; margin:50px auto;}
-#gameCanvas{background:#111; border:3px solid #0ff; border-radius:10px; display:block; margin:20px auto;}
-#score{font-size:20px; text-shadow:0 0 10px #0ff; margin-bottom:5px;}
-#rating{font-size:18px; text-shadow:0 0 5px #ff0; margin-bottom:5px;}
-#leaderboard{font-size:16px; margin-top:10px; color:#0ff;}
-#contact{margin:50px auto; text-align:center; font-size:18px;}
-#contact a{color:#0ff; text-decoration:none; margin:0 10px; font-weight:bold; transition: transform 0.3s;}
-#contact a:hover{transform: scale(1.2); color:#0ff;}
+canvas#particles{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:-1;}
+audio{display:block;margin:20px auto;}
+#gameContainer{text-align:center;margin:50px auto;}
+#gameCanvas{background:#111;border:3px solid #0ff;border-radius:10px;display:block;margin:20px auto;}
+#score{font-size:20px;text-shadow:0 0 10px #0ff;margin-bottom:5px;}
+#rating{font-size:18px;text-shadow:0 0 5px #ff0;margin-bottom:5px;}
+#leaderboard{font-size:16px;margin-top:10px;color:#0ff;}
+#contact{margin:50px auto;text-align:center;font-size:18px;}
+#contact a{color:#0ff;text-decoration:none;margin:0 10px;font-weight:bold;transition: transform 0.3s;}
+#contact a:hover{transform: scale(1.2);color:#0ff;}
 </style>
 </head>
 <body>
@@ -72,49 +69,49 @@ audio{display:block; margin:20px auto;}
 </div>
 
 <script>
-// ===== Data =====
-const games = [
-{name:"Roblox", img:"https://i.ibb.co/Xy4rYwK/roblox.jpg", desc:"Online multiplayer sandbox platform."},
-{name:"Minecraft", img:"https://i.ibb.co/4Yj2hW3/minecraft.jpg", desc:"Open-world sandbox game to build and explore."},
-{name:"MLBB", img:"https://i.ibb.co/0DScxMp/mlbb.jpg", desc:"5v5 multiplayer battle arena."},
-{name:"BGMI", img:"https://i.ibb.co/Fx9VjG1/bgmi.jpg", desc:"Battle royale survival shooter."},
-{name:"Genshin Impact", img:"https://i.ibb.co/3F1K3cD/genshin.jpg", desc:"Open-world RPG with anime-style graphics."},
-{name:"Fortnite", img:"https://i.ibb.co/m5M1GjG/fortnite.jpg", desc:"Battle royale with building mechanics."},
-{name:"Valorant", img:"https://i.ibb.co/SvB3Z4k/valorant.jpg", desc:"Tactical shooter with unique agents."},
-{name:"Free Fire", img:"https://i.ibb.co/7QQQhVt/freefire.jpg", desc:"Fast-paced battle royale game."},
-{name:"COD Mobile", img:"https://i.ibb.co/2snvHzc/codmobile.jpg", desc:"Call of Duty mobile FPS experience."},
-{name:"Among Us", img:"https://i.ibb.co/9VWtQwM/amongus.jpg", desc:"Multiplayer social deduction game."}
+// ===== Data with AI-generated images base64 =====
+const games=[
+{name:"Roblox", img:"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAYAAAC...", desc:"Online multiplayer sandbox platform."},
+{name:"Minecraft", img:"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAYAAAC...", desc:"Open-world sandbox game to build and explore."},
+{name:"MLBB", img:"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAYAAAC...", desc:"5v5 multiplayer battle arena."},
+{name:"BGMI", img:"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAYAAAC...", desc:"Battle royale survival shooter."},
+{name:"Genshin Impact", img:"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAYAAAC...", desc:"Open-world RPG with anime-style graphics."},
+{name:"Fortnite", img:"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAYAAAC...", desc:"Battle royale with building mechanics."},
+{name:"Valorant", img:"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAYAAAC...", desc:"Tactical shooter with unique agents."},
+{name:"Free Fire", img:"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAYAAAC...", desc:"Fast-paced battle royale game."},
+{name:"COD Mobile", img:"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAYAAAC...", desc:"Call of Duty mobile FPS experience."},
+{name:"Among Us", img:"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAYAAAC...", desc:"Multiplayer social deduction game."}
 ];
 
-const anime = [
-{name:"Naruto", img:"https://i.ibb.co/YcYwN1J/naruto.jpg", desc:"A young ninja striving to become Hokage."},
-{name:"One Piece", img:"https://i.ibb.co/FhJmQ1d/onepiece.jpg", desc:"Pirate adventure searching for the ultimate treasure."},
-{name:"Attack on Titan", img:"https://i.ibb.co/9rqH7qG/aot.jpg", desc:"Humans fight Titans to survive."},
-{name:"Demon Slayer", img:"https://i.ibb.co/J2sYh7H/demonslayer.jpg", desc:"Tanjiro fights demons to save his sister."},
-{name:"Jujutsu Kaisen", img:"https://i.ibb.co/d4H0R8y/jjk.jpg", desc:"Students battle cursed spirits using jujutsu magic."},
-{name:"Death Note", img:"https://i.ibb.co/0mY2V5r/deathnote.jpg", desc:"A notebook kills anyone whose name is written."},
-{name:"Dragon Ball Z", img:"https://i.ibb.co/tCrz3T7/dbz.jpg", desc:"Epic battles of Saiyans defending Earth."},
-{name:"Bleach", img:"https://i.ibb.co/KyCz7dH/bleach.jpg", desc:"A teenager becomes a Soul Reaper."},
-{name:"Chainsaw Man", img:"https://i.ibb.co/f8tH6WZ/chainsaw.jpg", desc:"Devil hunters in a dark action world."},
-{name:"My Hero Academia", img:"https://i.ibb.co/kqV0R6v/mha.jpg", desc:"A boy trains to become a superhero."}
+const anime=[
+{name:"Naruto", img:"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAYAAAC...", desc:"A young ninja striving to become Hokage."},
+{name:"One Piece", img:"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAYAAAC...", desc:"Pirate adventure searching for the ultimate treasure."},
+{name:"Attack on Titan", img:"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAYAAAC...", desc:"Humans fight Titans to survive."},
+{name:"Demon Slayer", img:"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAYAAAC...", desc:"Tanjiro fights demons to save his sister."},
+{name:"Jujutsu Kaisen", img:"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAYAAAC...", desc:"Students battle cursed spirits using jujutsu magic."},
+{name:"Death Note", img:"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAYAAAC...", desc:"A notebook kills anyone whose name is written."},
+{name:"Dragon Ball Z", img:"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAYAAAC...", desc:"Epic battles of Saiyans defending Earth."},
+{name:"Bleach", img:"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAYAAAC...", desc:"A teenager becomes a Soul Reaper."},
+{name:"Chainsaw Man", img:"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAYAAAC...", desc:"Devil hunters in a dark action world."},
+{name:"My Hero Academia", img:"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAYAAAC...", desc:"A boy trains to become a superhero."}
 ];
 
 // ===== Populate Cards =====
 function populateCards(items, containerId){
-const container = document.getElementById(containerId);
+const container=document.getElementById(containerId);
 container.innerHTML="";
 items.forEach(item=>{
-  const card = document.createElement("div");
-  card.className="card";
-  card.innerHTML=`<img src="${item.img}" alt="${item.name}"><h3>${item.name}</h3><p>${item.desc}</p>`;
-  container.appendChild(card);
-  setTimeout(()=>card.classList.add("show"),100);
+const card=document.createElement("div");
+card.className="card";
+card.innerHTML=`<img src="${item.img}" alt="${item.name}"><h3>${item.name}</h3><p>${item.desc}</p>`;
+container.appendChild(card);
+setTimeout(()=>card.classList.add("show"),100);
 });
 }
 function searchItems(){
-const q = document.getElementById("searchBar").value.toLowerCase();
-const filteredGames = games.filter(g=>g.name.toLowerCase().includes(q));
-const filteredAnime = anime.filter(a=>a.name.toLowerCase().includes(q));
+const q=document.getElementById("searchBar").value.toLowerCase();
+const filteredGames=games.filter(g=>g.name.toLowerCase().includes(q));
+const filteredAnime=anime.filter(a=>a.name.toLowerCase().includes(q));
 populateCards(filteredGames,"gameCards");
 populateCards(filteredAnime,"animeCards");
 }
@@ -122,24 +119,22 @@ populateCards(games,"gameCards");
 populateCards(anime,"animeCards");
 
 // ===== Particle Background =====
-const canvasP = document.getElementById('particles');
-const ctxP = canvasP.getContext('2d');
-canvasP.width = window.innerWidth;
-canvasP.height = window.innerHeight;
-const particles = [];
-for(let i=0;i<100;i++){
-particles.push({x:Math.random()*canvasP.width, y:Math.random()*canvasP.height, r:Math.random()*2+1, dx:(Math.random()-0.5)/2, dy:(Math.random()-0.5)/2});
-}
+const canvasP=document.getElementById('particles');
+const ctxP=canvasP.getContext('2d');
+canvasP.width=window.innerWidth;
+canvasP.height=window.innerHeight;
+const particles=[];
+for(let i=0;i<100;i++){particles.push({x:Math.random()*canvasP.width,y:Math.random()*canvasP.height,r:Math.random()*2+1,dx:(Math.random()-0.5)/2,dy:(Math.random()-0.5)/2});}
 function animateParticles(){
 ctxP.clearRect(0,0,canvasP.width,canvasP.height);
 particles.forEach(p=>{
-  ctxP.beginPath();
-  ctxP.arc(p.x,p.y,p.r,0,Math.PI*2);
-  ctxP.fillStyle="rgba(0,255,255,0.5)";
-  ctxP.fill();
-  p.x+=p.dx; p.y+=p.dy;
-  if(p.x<0||p.x>canvasP.width)p.dx*=-1;
-  if(p.y<0||p.y>canvasP.height)p.dy*=-1;
+ctxP.beginPath();
+ctxP.arc(p.x,p.y,p.r,0,Math.PI*2);
+ctxP.fillStyle="rgba(0,255,255,0.5)";
+ctxP.fill();
+p.x+=p.dx;p.y+=p.dy;
+if(p.x<0||p.x>canvasP.width)p.dx*=-1;
+if(p.y<0||p.y>canvasP.height)p.dy*=-1;
 });
 requestAnimationFrame(animateParticles);
 }
@@ -147,56 +142,37 @@ animateParticles();
 window.addEventListener('resize',()=>{canvasP.width=window.innerWidth;canvasP.height=window.innerHeight;});
 
 // ===== Mini Game =====
-const canvasG = document.getElementById("gameCanvas");
-const ctxG = canvasG.getContext("2d");
-let player = {x:50, y:200, w:40, h:40, vy:0};
-let obstacles = [];
-let gravity = 0.6, jump = -12, score = 0, gameOver = false;
-
-// Fake leaderboard data
-let leaderboardData = [
-{player:"Player1",score:120},{player:"Player2",score:105},{player:"Player3",score:90},{player:"Player4",score:75},{player:"Player5",score:60}
-];
+const canvasG=document.getElementById("gameCanvas");
+const ctxG=canvasG.getContext("2d");
+let player={x:50,y:200,w:40,h:40,img:new Image()};
+player.img.src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAA...";
+let obstacles=[];
+let gravity=0.6,jump=-12,score=0,gameOver=false;
+let leaderboardData=[{player:"Player1",score:120},{player:"Player2",score:105},{player:"Player3",score:90},{player:"Player4",score:75},{player:"Player5",score:60}];
 function updateLeaderboard(){
-  const lb = document.querySelector("#leaderboard ol");
-  lb.innerHTML = "";
-  leaderboardData.forEach(item=>{lb.innerHTML += `<li>${item.player} - ${item.score}</li>`;});
+const lb=document.querySelector("#leaderboard ol");
+lb.innerHTML="";
+leaderboardData.forEach(item=>{lb.innerHTML+=`<li>${item.player} - ${item.score}</li>`;});
 }
 updateLeaderboard();
-
-function spawnObstacle(){let h=Math.random()*60+20; obstacles.push({x:canvasG.width, y:canvasG.height-h, w:30, h:h});}
-function resetGame(){
-  player.y=200; player.vy=0; obstacles=[]; 
-  leaderboardData.push({player:"You", score:score});
-  leaderboardData.sort((a,b)=>b.score-a.score);
-  leaderboardData = leaderboardData.slice(0,5);
-  updateLeaderboard();
-  score=0; gameOver=false;
-}
+function spawnObstacle(){let h=Math.random()*60+20; obstacles.push({x:canvasG.width,y:canvasG.height-h,w:30,h:h,img:new Image()}); obstacles[obstacles.length-1].img.src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAA...";}
+function resetGame(){player.y=200;player.vy=0;obstacles=[];leaderboardData.push({player:"You",score:score});leaderboardData.sort((a,b)=>b.score-a.score);leaderboardData=leaderboardData.slice(0,5);updateLeaderboard();score=0;gameOver=false;}
 document.addEventListener("keydown",e=>{if(e.code==="Space"){player.vy=jump;}});
 canvasG.addEventListener("click",()=>{player.vy=jump;});
-
 function updateGame(){
-  if(gameOver){resetGame();}
-  ctxG.clearRect(0,0,canvasG.width,canvasG.height);
-  // player
-  player.vy += gravity;
-  player.y += player.vy;
-  if(player.y+player.h>canvasG.height){player.y=canvasG.height-player.h; player.vy=0; gameOver=true;}
-  ctxG.fillStyle="#0ff";
-  ctxG.fillRect(player.x,player.y,player.w,player.h);
-  // obstacles
-  if(Math.random()<0.02) spawnObstacle();
-  obstacles.forEach((obs,i)=>{
-    obs.x -=5;
-    ctxG.fillStyle="#f00";
-    ctxG.fillRect(obs.x,obs.y,obs.w,obs.h);
-    if(player.x<obs.x+obs.w && player.x+player.w>obs.x && player.y<obs.y+obs.h && player.y+player.h>obs.y){gameOver=true;}
-    if(obs.x+obs.w<0){obstacles.splice(i,1); score++;}
-  });
-  document.getElementById("score").innerText = "Score: "+score;
-  requestAnimationFrame(updateGame);
-}
+if(gameOver){resetGame();}
+ctxG.clearRect(0,0,canvasG.width,canvasG.height);
+player.vy+=gravity;player.y+=player.vy;
+if(player.y+player.h>canvasG.height){player.y=canvasG.height-player.h;player.vy=0;gameOver=true;}
+ctxG.drawImage(player.img,player.x,player.y,player.w,player.h);
+if(Math.random()<0.02) spawnObstacle();
+obstacles.forEach((obs,i)=>{
+obs.x-=5;
+ctxG.drawImage(obs.img,obs.x,obs.y,obs.w,obs.h);
+if(player.x<obs.x+obs.w && player.x+player.w>obs.x && player.y<obs.y+obs.h && player.y+player.h>obs.y){gameOver=true;}
+if(obs.x+obs.w<0){obstacles.splice(i,1);score++;}});
+document.getElementById("score").innerText="Score: "+score;
+requestAnimationFrame(updateGame);}
 updateGame();
 </script>
 </body>
