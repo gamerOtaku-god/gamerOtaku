@@ -3,118 +3,148 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Prithiv’s Anime & Game Hub</title>
-<meta name="description" content="Prithiv’s Anime & Game Hub – Explore 20+ top anime and 20+ popular games with images, descriptions, and recommendations. Search and discover instantly!">
-<meta name="keywords" content="Anime, Games, Naruto, One Piece, Roblox, Minecraft, MLBB, BGMI, Genshin Impact, Attack on Titan, Demon Slayer, Jujutsu Kaisen, Death Note, Dragon Ball, Bleach, Chainsaw Man, My Hero Academia, Haikyuu, Spy × Family, Fortnite, Valorant, Free Fire, COD Mobile, Clash Royale, Among Us">
-<meta name="author" content="Prithiv RJ">
-
+<title>Pr1thv Hub - Anime & Games</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 <style>
-*{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;color:white;overflow-x:hidden;background:#0f0c29;min-height:100vh;}
-header{text-align:center;padding:30px;font-size:36px;color:#00fff0;text-shadow:0 0 15px #00fff0;letter-spacing:1px;}
-#search-container{text-align:center;margin-bottom:30px;}
-#search{padding:12px 20px;width:90%;max-width:450px;border-radius:30px;border:none;outline:none;font-size:16px;box-shadow:0 0 15px rgba(0,255,255,0.5);background:rgba(255,255,255,0.05);color:white;transition:0.3s;}
-#search:focus{box-shadow:0 0 25px #00fff0;}
-.section{padding:30px;}
-h2{text-align:center;margin-bottom:25px;font-size:28px;}
-.game-title{color:#00ff88;text-shadow:0 0 12px #00ff88;}
-.anime-title{color:#ff4ecd;text-shadow:0 0 12px #ff4ecd;}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:25px;}
-.card{background:rgba(255,255,255,0.05);border-radius:15px;padding:12px;text-align:center;box-shadow:0 0 15px rgba(0,0,0,0.35);transform:translateY(40px);opacity:0;transition:0.5s ease, box-shadow 0.3s, transform 0.3s;}
-.card.visible{transform:translateY(0);opacity:1;}
-.card:hover{transform:translateY(-6px) scale(1.05);box-shadow:0 0 25px #00fff0;}
-.card img{width:100%;height:200px;object-fit:cover;border-radius:12px;background:#000;transition:0.3s;}
-.card img:hover{transform:scale(1.03);}
-.card p{margin-top:10px;font-weight:bold;font-size:16px;text-shadow:0 0 6px #00fff0;}
-.card .desc{font-weight:normal;font-size:14px;margin-top:6px;color:#c0f0ff;}
-.contact{text-align:center;padding:35px;background:rgba(0,0,0,0.25);font-size:16px;}
-.contact a{color:#00fff0;text-decoration:none;font-weight:bold;}
-.contact a:hover{text-decoration:underline;}
-@media(max-width:600px){#search{font-size:14px;}header{font-size:28px;}}
+body {
+  margin:0; font-family:'Roboto', sans-serif;
+  background: linear-gradient(135deg, #1f1c2c, #928dab);
+  color:#fff;
+  overflow-x:hidden;
+  scroll-behavior:smooth;
+}
+h1,h2 {text-align:center; text-shadow:0 0 10px #00f,0 0 20px #0ff;}
+#searchBar {display:block; margin:20px auto; padding:10px; width:90%; max-width:500px; border-radius:10px; border:none; font-size:18px; text-align:center; outline:none;}
+.section {margin:20px auto; max-width:1200px;}
+.cards {display:grid; grid-template-columns: repeat(auto-fill,minmax(180px,1fr)); gap:20px;}
+.card {
+  background: rgba(255,255,255,0.1);
+  border-radius: 15px;
+  overflow: hidden;
+  text-align: center;
+  transition: transform 0.5s, box-shadow 0.5s, opacity 1s;
+  opacity:0; 
+  transform: translateY(50px);
+  box-shadow:0 0 10px #00f;
+}
+.card.show {
+  opacity:1;
+  transform: translateY(0);
+}
+.card:hover {
+  transform: scale(1.1) rotateZ(1deg);
+  box-shadow: 0 0 25px #0ff;
+}
+.card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s;
+}
+.card img:hover {
+  transform: scale(1.05) rotateZ(-1deg);
+}
+.card h3 {margin:10px 0 5px 0;}
+.card p {padding:0 10px 10px 10px; font-size:14px;}
+canvas#particles {
+  position:fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:-1;
+}
+audio {display:block; margin:20px auto;}
 </style>
 </head>
 <body>
 
-<div id="loader" style="position:fixed;width:100%;height:100%;background:#0f0c29;display:flex;justify-content:center;align-items:center;font-size:28px;color:#00fff0;z-index:9999;">Loading...</div>
+<canvas id="particles"></canvas>
 
-<header>🔥 Prithiv’s Anime & Game Hub 🔥</header>
-<div id="search-container"><input type="text" id="search" placeholder="Search anime or game..."></div>
+<h1>Pr1thv Hub - Anime & Games</h1>
+<input id="searchBar" type="text" placeholder="Search anime or games..." onkeyup="searchItems()">
 
-<!-- GAMES -->
 <div class="section">
-<h2 class="game-title">🎮 Top Games</h2>
-<div class="grid" id="games-grid">
-<!-- Game cards (images + name + description) -->
-<!-- Only showing 5 here for readability, add remaining similarly -->
-<div class="card" data-name="Roblox"><img src="https://i.imgur.com/0Z8FQ0B.jpg"><p>Roblox</p><p class="desc">Create, explore, and play millions of 3D worlds made by players globally.</p></div>
-<div class="card" data-name="Minecraft"><img src="https://i.imgur.com/kxXG3kH.jpg"><p>Minecraft</p><p class="desc">Build, explore, and survive in a limitless blocky universe.</p></div>
-<div class="card" data-name="MLBB"><img src="https://i.imgur.com/yT5dZ8o.jpg"><p>MLBB</p><p class="desc">5v5 multiplayer online battle arena with heroes and strategy.</p></div>
-<div class="card" data-name="BGMI"><img src="https://i.imgur.com/6j9NqkK.jpg"><p>BGMI</p><p class="desc">Battle royale survival shooter with weapons, maps, and teamwork.</p></div>
-<div class="card" data-name="Genshin Impact"><img src="https://i.imgur.com/Jx9G9zK.jpg"><p>Genshin Impact</p><p class="desc">Open-world RPG with elemental combat and story-driven quests.</p></div>
-<!-- Add remaining 15+ games the same way -->
-</div>
+<h2>🎮 Top Games</h2>
+<div class="cards" id="gameCards"></div>
 </div>
 
-<!-- ANIME -->
 <div class="section">
-<h2 class="anime-title">🎌 Anime Recommendations</h2>
-<div class="grid" id="anime-grid">
-<!-- Anime cards (images + name + description) -->
-<div class="card" data-name="Naruto"><img src="https://i.imgur.com/jJ7QKpX.jpg"><p>Naruto</p><p class="desc">A young ninja dreams of becoming the strongest Hokage while facing enemies and forming friendships.</p></div>
-<div class="card" data-name="One Piece"><img src="https://i.imgur.com/qyq9F5S.jpg"><p>One Piece</p><p class="desc">Monkey D. Luffy sails with his crew in search of the legendary treasure One Piece.</p></div>
-<div class="card" data-name="Attack on Titan"><img src="https://i.imgur.com/2vE6yJz.jpg"><p>Attack on Titan</p><p class="desc">Humanity fights for survival against gigantic Titans in a walled world.</p></div>
-<div class="card" data-name="Demon Slayer"><img src="https://i.imgur.com/7p0xN2S.jpg"><p>Demon Slayer</p><p class="desc">Tanjiro battles demons to save his sister and avenge his family.</p></div>
-<div class="card" data-name="Jujutsu Kaisen"><img src="https://i.imgur.com/5x3z2qL.jpg"><p>Jujutsu Kaisen</p><p class="desc">Yuji Itadori joins sorcerers to fight cursed spirits.</p></div>
-<!-- Add remaining 15+ anime similarly -->
-</div>
+<h2>🎌 Top Anime</h2>
+<div class="cards" id="animeCards"></div>
 </div>
 
-<!-- CONTACT -->
-<div class="contact">
-<h2>📩 Contact Me</h2>
-<p>Gmail: <b>prithivirajredder@gmail.com</b><br><br>Instagram: <a href="https://www.instagram.com/pr1thv_rj___?igsh=OXgwaDhsejR2OGFq" target="_blank">@pr1thv_rj___</a></p>
-</div>
+<audio src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" autoplay loop></audio>
 
 <script>
-// Loader hide
-window.onload = function(){
-document.getElementById("loader").style.display="none";
+// ===== JSON DATA =====
+const games = [
+  {name:"Roblox", img:"https://i.ibb.co/Xy4rYwK/roblox.jpg", desc:"Online multiplayer sandbox platform."},
+  {name:"Minecraft", img:"https://i.ibb.co/4Yj2hW3/minecraft.jpg", desc:"Open-world sandbox game to build and explore."},
+  {name:"MLBB", img:"https://i.ibb.co/0DScxMp/mlbb.jpg", desc:"5v5 multiplayer battle arena."},
+  {name:"BGMI", img:"https://i.ibb.co/Fx9VjG1/bgmi.jpg", desc:"Battle royale survival shooter."},
+  {name:"Genshin Impact", img:"https://i.ibb.co/3F1K3cD/genshin.jpg", desc:"Open-world RPG with anime-style graphics."},
+  {name:"Fortnite", img:"https://i.ibb.co/m5M1GjG/fortnite.jpg", desc:"Battle royale with building mechanics."},
+  {name:"Valorant", img:"https://i.ibb.co/SvB3Z4k/valorant.jpg", desc:"Tactical shooter with unique agents."},
+  {name:"Free Fire", img:"https://i.ibb.co/7QQQhVt/freefire.jpg", desc:"Fast-paced battle royale game."},
+  {name:"COD Mobile", img:"https://i.ibb.co/2snvHzc/codmobile.jpg", desc:"Call of Duty mobile FPS experience."},
+  {name:"Among Us", img:"https://i.ibb.co/9VWtQwM/amongus.jpg", desc:"Multiplayer social deduction game."}
+];
+const anime = [
+  {name:"Naruto", img:"https://i.ibb.co/YcYwN1J/naruto.jpg", desc:"A young ninja striving to become Hokage."},
+  {name:"One Piece", img:"https://i.ibb.co/FhJmQ1d/onepiece.jpg", desc:"Pirate adventure searching for the ultimate treasure."},
+  {name:"Attack on Titan", img:"https://i.ibb.co/9rqH7qG/aot.jpg", desc:"Humans fight Titans to survive."},
+  {name:"Demon Slayer", img:"https://i.ibb.co/J2sYh7H/demonslayer.jpg", desc:"Tanjiro fights demons to save his sister."},
+  {name:"Jujutsu Kaisen", img:"https://i.ibb.co/d4H0R8y/jjk.jpg", desc:"Students battle cursed spirits using jujutsu magic."},
+  {name:"Death Note", img:"https://i.ibb.co/0mY2V5r/deathnote.jpg", desc:"A notebook kills anyone whose name is written."},
+  {name:"Dragon Ball Z", img:"https://i.ibb.co/tCrz3T7/dbz.jpg", desc:"Epic battles of Saiyans defending Earth."},
+  {name:"Bleach", img:"https://i.ibb.co/KyCz7dH/bleach.jpg", desc:"A teenager becomes a Soul Reaper."},
+  {name:"Chainsaw Man", img:"https://i.ibb.co/f8tH6WZ/chainsaw.jpg", desc:"Devil hunters in a dark action world."},
+  {name:"My Hero Academia", img:"https://i.ibb.co/kqV0R6v/mha.jpg", desc:"A boy trains to become a superhero."}
+];
 
-// Pop-up cards animation
-const cards = document.querySelectorAll('.card');
-function showCards(){
-    const trigger = window.innerHeight*0.85;
-    cards.forEach(card=>{
-        const top = card.getBoundingClientRect().top;
-        if(top<trigger) card.classList.add('visible');
-    });
+// ===== POPULATE CARDS =====
+function populateCards(items, containerId){
+  const container = document.getElementById(containerId);
+  container.innerHTML = "";
+  items.forEach(item=>{
+    const card = document.createElement("div");
+    card.className="card";
+    card.innerHTML=`<img src="${item.img}" alt="${item.name}"><h3>${item.name}</h3><p>${item.desc}</p>`;
+    container.appendChild(card);
+    setTimeout(()=>card.classList.add("show"),100); // fade-in animation
+  });
 }
-window.addEventListener('scroll', showCards);
-showCards();
+function searchItems(){
+  const q = document.getElementById("searchBar").value.toLowerCase();
+  const filteredGames = games.filter(g=>g.name.toLowerCase().includes(q));
+  const filteredAnime = anime.filter(a=>a.name.toLowerCase().includes(q));
+  populateCards(filteredGames,"gameCards");
+  populateCards(filteredAnime,"animeCards");
+}
+populateCards(games,"gameCards");
+populateCards(anime,"animeCards");
 
-// Search filter
-const search = document.getElementById('search');
-search.addEventListener('input', function(){
-    const value = this.value.toLowerCase();
-    cards.forEach(card=>{
-        const name = card.dataset.name.toLowerCase();
-        card.style.display = name.includes(value) ? 'block' : 'none';
-    });
-});
-};
-
-// Lightweight neon background
-const canvas = document.createElement('canvas');
-canvas.id='bg';
-document.body.appendChild(canvas);
-canvas.style.position='fixed'; canvas.style.top=0; canvas.style.left=0; canvas.style.width='100%'; canvas.style.height='100%'; canvas.style.zIndex=-1;
-const ctx = canvas.getContext('2d'); canvas.width = window.innerWidth; canvas.height = window.innerHeight;
-let particles=[];
-for(let i=0;i<80;i++){particles.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,r:Math.random()*2+1,dx:(Math.random()-0.5)*1.2,dy:(Math.random()-0.5)*1.2,color:`hsl(${Math.random()*360},80%,60%)`});}
-function animate(){ctx.clearRect(0,0,canvas.width,canvas.height);particles.forEach(p=>{p.x+=p.dx;p.y+=p.dy;if(p.x<0||p.x>canvas.width)p.dx*=-1;if(p.y<0||p.y>canvas.height)p.dy*=-1;ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle=p.color;ctx.shadowBlur=8;ctx.shadowColor=p.color;ctx.fill();});requestAnimationFrame(animate);}
-animate();
+// ===== PARTICLE BACKGROUND =====
+const canvas = document.getElementById('particles');
+const ctx = canvas.getContext('2d');
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+const particles = [];
+for(let i=0;i<100;i++){
+  particles.push({x:Math.random()*canvas.width, y:Math.random()*canvas.height, r:Math.random()*2+1, dx:(Math.random()-0.5)/2, dy:(Math.random()-0.5)/2});
+}
+function animateParticles(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  particles.forEach(p=>{
+    ctx.beginPath();
+    ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+    ctx.fillStyle="rgba(0,255,255,0.5)";
+    ctx.fill();
+    p.x+=p.dx; p.y+=p.dy;
+    if(p.x<0||p.x>canvas.width)p.dx*=-1;
+    if(p.y<0||p.y>canvas.height)p.dy*=-1;
+  });
+  requestAnimationFrame(animateParticles);
+}
+animateParticles();
 window.addEventListener('resize',()=>{canvas.width=window.innerWidth;canvas.height=window.innerHeight;});
 </script>
-
 </body>
-                                                                                                                                                                                    </html>
+    </html>
