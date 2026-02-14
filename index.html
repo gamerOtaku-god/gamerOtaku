@@ -48,7 +48,6 @@ audio{display:block;margin:20px auto;}
 
 <audio src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" autoplay loop></audio>
 
-<!-- Mini Game Section -->
 <div class="section" id="gameContainer">
 <h2>🎮 Boring? Try this game!</h2>
 <div id="rating">Rating: ★★★★☆</div>
@@ -61,7 +60,6 @@ audio{display:block;margin:20px auto;}
 <p>Press SPACE or CLICK to jump!</p>
 </div>
 
-<!-- Contact Section -->
 <div id="contact">
 <h2>Contact Me</h2>
 <a href="mailto:prithivirajredder@gmail.com" target="_blank">Gmail</a> | 
@@ -69,31 +67,31 @@ audio{display:block;margin:20px auto;}
 </div>
 
 <script>
-// ===== Data with AI-generated images base64 =====
+// ===== Data with free working image URLs =====
 const games=[
-{name:"Roblox", img:"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAYAAAC...", desc:"Online multiplayer sandbox platform."},
-{name:"Minecraft", img:"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAYAAAC...", desc:"Open-world sandbox game to build and explore."},
-{name:"MLBB", img:"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAYAAAC...", desc:"5v5 multiplayer battle arena."},
-{name:"BGMI", img:"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAYAAAC...", desc:"Battle royale survival shooter."},
-{name:"Genshin Impact", img:"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAYAAAC...", desc:"Open-world RPG with anime-style graphics."},
-{name:"Fortnite", img:"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAYAAAC...", desc:"Battle royale with building mechanics."},
-{name:"Valorant", img:"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAYAAAC...", desc:"Tactical shooter with unique agents."},
-{name:"Free Fire", img:"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAYAAAC...", desc:"Fast-paced battle royale game."},
-{name:"COD Mobile", img:"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAYAAAC...", desc:"Call of Duty mobile FPS experience."},
-{name:"Among Us", img:"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAYAAAC...", desc:"Multiplayer social deduction game."}
+{name:"Roblox", img:"https://cdn.pixabay.com/photo/2022/04/07/19/01/roblox-7111709_1280.jpg", desc:"Online multiplayer sandbox platform."},
+{name:"Minecraft", img:"https://cdn.pixabay.com/photo/2019/04/20/22/06/minecraft-4144997_1280.jpg", desc:"Open-world sandbox game to build and explore."},
+{name:"MLBB", img:"https://cdn.pixabay.com/photo/2018/03/06/17/31/game-3208689_1280.jpg", desc:"5v5 multiplayer battle arena."},
+{name:"BGMI", img:"https://cdn.pixabay.com/photo/2021/10/20/08/55/battle-6733783_1280.jpg", desc:"Battle royale survival shooter."},
+{name:"Genshin Impact", img:"https://cdn.pixabay.com/photo/2021/10/16/17/39/anime-6713986_1280.jpg", desc:"Open-world RPG with anime-style graphics."},
+{name:"Fortnite", img:"https://cdn.pixabay.com/photo/2019/06/18/19/55/fortnite-4282046_1280.jpg", desc:"Battle royale with building mechanics."},
+{name:"Valorant", img:"https://cdn.pixabay.com/photo/2020/07/14/12/04/valorant-5402971_1280.jpg", desc:"Tactical shooter with unique agents."},
+{name:"Free Fire", img:"https://cdn.pixabay.com/photo/2021/12/21/06/36/game-6889951_1280.jpg", desc:"Fast-paced battle royale game."},
+{name:"COD Mobile", img:"https://cdn.pixabay.com/photo/2022/01/13/13/05/call-of-duty-6934257_1280.jpg", desc:"Call of Duty mobile FPS experience."},
+{name:"Among Us", img:"https://cdn.pixabay.com/photo/2021/07/23/16/30/among-us-6486211_1280.png", desc:"Multiplayer social deduction game."}
 ];
 
 const anime=[
-{name:"Naruto", img:"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAYAAAC...", desc:"A young ninja striving to become Hokage."},
-{name:"One Piece", img:"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAYAAAC...", desc:"Pirate adventure searching for the ultimate treasure."},
-{name:"Attack on Titan", img:"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAYAAAC...", desc:"Humans fight Titans to survive."},
-{name:"Demon Slayer", img:"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAYAAAC...", desc:"Tanjiro fights demons to save his sister."},
-{name:"Jujutsu Kaisen", img:"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAYAAAC...", desc:"Students battle cursed spirits using jujutsu magic."},
-{name:"Death Note", img:"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAYAAAC...", desc:"A notebook kills anyone whose name is written."},
-{name:"Dragon Ball Z", img:"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAYAAAC...", desc:"Epic battles of Saiyans defending Earth."},
-{name:"Bleach", img:"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAYAAAC...", desc:"A teenager becomes a Soul Reaper."},
-{name:"Chainsaw Man", img:"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAYAAAC...", desc:"Devil hunters in a dark action world."},
-{name:"My Hero Academia", img:"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAYAAAC...", desc:"A boy trains to become a superhero."}
+{name:"Naruto", img:"https://cdn.pixabay.com/photo/2017/09/25/21/22/naruto-2785674_1280.jpg", desc:"A young ninja striving to become Hokage."},
+{name:"One Piece", img:"https://cdn.pixabay.com/photo/2021/03/21/10/57/one-piece-6112389_1280.jpg", desc:"Pirate adventure searching for the ultimate treasure."},
+{name:"Attack on Titan", img:"https://cdn.pixabay.com/photo/2021/02/07/17/17/attack-on-titan-5984151_1280.jpg", desc:"Humans fight Titans to survive."},
+{name:"Demon Slayer", img:"https://cdn.pixabay.com/photo/2021/06/01/11/03/demon-slayer-6294282_1280.jpg", desc:"Tanjiro fights demons to save his sister."},
+{name:"Jujutsu Kaisen", img:"https://cdn.pixabay.com/photo/2021/07/14/12/53/anime-6465895_1280.jpg", desc:"Students battle cursed spirits using jujutsu magic."},
+{name:"Death Note", img:"https://cdn.pixabay.com/photo/2017/10/18/15/19/death-note-2866205_1280.jpg", desc:"A notebook kills anyone whose name is written."},
+{name:"Dragon Ball Z", img:"https://cdn.pixabay.com/photo/2018/05/30/07/48/dragon-ball-3441485_1280.jpg", desc:"Epic battles of Saiyans defending Earth."},
+{name:"Bleach", img:"https://cdn.pixabay.com/photo/2018/04/11/09/03/bleach-3315165_1280.jpg", desc:"A teenager becomes a Soul Reaper."},
+{name:"Chainsaw Man", img:"https://cdn.pixabay.com/photo/2021/08/22/12/22/anime-6561362_1280.jpg", desc:"Devil hunters in a dark action world."},
+{name:"My Hero Academia", img:"https://cdn.pixabay.com/photo/2020/12/17/10/57/anime-5842093_1280.jpg", desc:"A boy trains to become a superhero."}
 ];
 
 // ===== Populate Cards =====
@@ -110,10 +108,8 @@ setTimeout(()=>card.classList.add("show"),100);
 }
 function searchItems(){
 const q=document.getElementById("searchBar").value.toLowerCase();
-const filteredGames=games.filter(g=>g.name.toLowerCase().includes(q));
-const filteredAnime=anime.filter(a=>a.name.toLowerCase().includes(q));
-populateCards(filteredGames,"gameCards");
-populateCards(filteredAnime,"animeCards");
+populateCards(games.filter(g=>g.name.toLowerCase().includes(q)),"gameCards");
+populateCards(anime.filter(a=>a.name.toLowerCase().includes(q)),"animeCards");
 }
 populateCards(games,"gameCards");
 populateCards(anime,"animeCards");
@@ -121,58 +117,23 @@ populateCards(anime,"animeCards");
 // ===== Particle Background =====
 const canvasP=document.getElementById('particles');
 const ctxP=canvasP.getContext('2d');
-canvasP.width=window.innerWidth;
-canvasP.height=window.innerHeight;
-const particles=[];
-for(let i=0;i<100;i++){particles.push({x:Math.random()*canvasP.width,y:Math.random()*canvasP.height,r:Math.random()*2+1,dx:(Math.random()-0.5)/2,dy:(Math.random()-0.5)/2});}
-function animateParticles(){
-ctxP.clearRect(0,0,canvasP.width,canvasP.height);
-particles.forEach(p=>{
-ctxP.beginPath();
-ctxP.arc(p.x,p.y,p.r,0,Math.PI*2);
-ctxP.fillStyle="rgba(0,255,255,0.5)";
-ctxP.fill();
-p.x+=p.dx;p.y+=p.dy;
-if(p.x<0||p.x>canvasP.width)p.dx*=-1;
-if(p.y<0||p.y>canvasP.height)p.dy*=-1;
-});
-requestAnimationFrame(animateParticles);
-}
-animateParticles();
-window.addEventListener('resize',()=>{canvasP.width=window.innerWidth;canvasP.height=window.innerHeight;});
+canvasP.width=window.innerWidth; canvasP.height=window.innerHeight;
+const particles=[]; for(let i=0;i<100;i++){particles.push({x:Math.random()*canvasP.width,y:Math.random()*canvasP.height,r:Math.random()*2+1,dx:(Math.random()-0.5)/2,dy:(Math.random()-0.5)/2});}
+function animateParticles(){ctxP.clearRect(0,0,canvasP.width,canvasP.height);particles.forEach(p=>{ctxP.beginPath();ctxP.arc(p.x,p.y,p.r,0,Math.PI*2);ctxP.fillStyle="rgba(0,255,255,0.5)";ctxP.fill();p.x+=p.dx;p.y+=p.dy;if(p.x<0||p.x>canvasP.width)p.dx*=-1;if(p.y<0||p.y>canvasP.height)p.dy*=-1;});requestAnimationFrame(animateParticles);}
+animateParticles(); window.addEventListener('resize',()=>{canvasP.width=window.innerWidth;canvasP.height=window.innerHeight;});
 
 // ===== Mini Game =====
-const canvasG=document.getElementById("gameCanvas");
-const ctxG=canvasG.getContext("2d");
-let player={x:50,y:200,w:40,h:40,img:new Image()};
-player.img.src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAA...";
-let obstacles=[];
-let gravity=0.6,jump=-12,score=0,gameOver=false;
+const canvasG=document.getElementById("gameCanvas"); const ctxG=canvasG.getContext("2d");
+let player={x:50,y:200,w:40,h:40,img:new Image()}; player.img.src="https://cdn.pixabay.com/photo/2016/03/31/19/06/video-game-1291413_1280.png";
+let obstacles=[]; let gravity=0.6,jump=-12,score=0,gameOver=false;
 let leaderboardData=[{player:"Player1",score:120},{player:"Player2",score:105},{player:"Player3",score:90},{player:"Player4",score:75},{player:"Player5",score:60}];
-function updateLeaderboard(){
-const lb=document.querySelector("#leaderboard ol");
-lb.innerHTML="";
-leaderboardData.forEach(item=>{lb.innerHTML+=`<li>${item.player} - ${item.score}</li>`;});
-}
+function updateLeaderboard(){const lb=document.querySelector("#leaderboard ol"); lb.innerHTML=""; leaderboardData.forEach(item=>{lb.innerHTML+=`<li>${item.player} - ${item.score}</li>`;});}
 updateLeaderboard();
-function spawnObstacle(){let h=Math.random()*60+20; obstacles.push({x:canvasG.width,y:canvasG.height-h,w:30,h:h,img:new Image()}); obstacles[obstacles.length-1].img.src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAA...";}
-function resetGame(){player.y=200;player.vy=0;obstacles=[];leaderboardData.push({player:"You",score:score});leaderboardData.sort((a,b)=>b.score-a.score);leaderboardData=leaderboardData.slice(0,5);updateLeaderboard();score=0;gameOver=false;}
+function spawnObstacle(){let h=Math.random()*60+20; obstacles.push({x:canvasG.width,y:canvasG.height-h,w:30,h:h,img:new Image()}); obstacles[obstacles.length-1].img.src="https://cdn.pixabay.com/photo/2013/07/13/12/07/obstacle-160003_1280.png";}
+function resetGame(){player.y=200;player.vy=0;obstacles=[]; leaderboardData.push({player:"You",score:score}); leaderboardData.sort((a,b)=>b.score-a.score); leaderboardData=leaderboardData.slice(0,5);updateLeaderboard();score=0;gameOver=false;}
 document.addEventListener("keydown",e=>{if(e.code==="Space"){player.vy=jump;}});
 canvasG.addEventListener("click",()=>{player.vy=jump;});
-function updateGame(){
-if(gameOver){resetGame();}
-ctxG.clearRect(0,0,canvasG.width,canvasG.height);
-player.vy+=gravity;player.y+=player.vy;
-if(player.y+player.h>canvasG.height){player.y=canvasG.height-player.h;player.vy=0;gameOver=true;}
-ctxG.drawImage(player.img,player.x,player.y,player.w,player.h);
-if(Math.random()<0.02) spawnObstacle();
-obstacles.forEach((obs,i)=>{
-obs.x-=5;
-ctxG.drawImage(obs.img,obs.x,obs.y,obs.w,obs.h);
-if(player.x<obs.x+obs.w && player.x+player.w>obs.x && player.y<obs.y+obs.h && player.y+player.h>obs.y){gameOver=true;}
-if(obs.x+obs.w<0){obstacles.splice(i,1);score++;}});
-document.getElementById("score").innerText="Score: "+score;
-requestAnimationFrame(updateGame);}
+function updateGame(){if(gameOver){resetGame();}ctxG.clearRect(0,0,canvasG.width,canvasG.height);player.vy+=gravity;player.y+=player.vy;if(player.y+player.h>canvasG.height){player.y=canvasG.height-player.h;player.vy=0;gameOver=true;}ctxG.drawImage(player.img,player.x,player.y,player.w,player.h);if(Math.random()<0.02) spawnObstacle();obstacles.forEach((obs,i)=>{obs.x-=5;ctxG.drawImage(obs.img,obs.x,obs.y,obs.w,obs.h);if(player.x<obs.x+obs.w && player.x+player.w>obs.x && player.y<obs.y+obs.h && player.y+player.h>obs.y){gameOver=true;}if(obs.x+obs.w<0){obstacles.splice(i,1);score++;}});document.getElementById("score").innerText="Score: "+score;requestAnimationFrame(updateGame);}
 updateGame();
 </script>
 </body>
